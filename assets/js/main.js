@@ -67,16 +67,23 @@ const homeSwp = new Swiper('.home-swp .swiper', {
   }
 })
 
-if (homeSwp) {
-  const swpFraction = document.querySelector('.home-bottom__right .swp-fraction');
-  swpFraction.innerHTML = `<span>${homeSwp.realIndex < 9 ? '0' + (homeSwp.realIndex + 1) : (homeSwp.realIndex + 1)} /</span> ${homeSwp.slides.length < 9 ? '0' + homeSwp.slides.length : homeSwp.slides.lengt}`
-  homeSwp.on('slideChange', function (e) {
+try {
+  if (homeSwp) {
+    const swpFraction = document.querySelector('.home-bottom__right .swp-fraction');
     swpFraction.innerHTML = `<span>${homeSwp.realIndex < 9 ? '0' + (homeSwp.realIndex + 1) : (homeSwp.realIndex + 1)} /</span> ${homeSwp.slides.length < 9 ? '0' + homeSwp.slides.length : homeSwp.slides.lengt}`
-  });
+    homeSwp.on('slideChange', function (e) {
+      swpFraction.innerHTML = `<span>${homeSwp.realIndex < 9 ? '0' + (homeSwp.realIndex + 1) : (homeSwp.realIndex + 1)} /</span> ${homeSwp.slides.length < 9 ? '0' + homeSwp.slides.length : homeSwp.slides.lengt}`
+    });
+  }
+} catch (error) {
+
 }
-document.getElementById('play-btn').addEventListener('click', function () {
-  const videoContainer = document.querySelector('.work-video');
-  videoContainer.innerHTML = `
+const playBtn = document.getElementById('play-btn');
+if (playBtn) {
+
+  playBtn.addEventListener('click', function () {
+    const videoContainer = document.querySelector('.work-video');
+    videoContainer.innerHTML = `
     <iframe
       width="100%"
       height="100%"
@@ -87,4 +94,47 @@ document.getElementById('play-btn').addEventListener('click', function () {
       allowfullscreen
     ></iframe>
   `;
+  });
+}
+
+// custom select
+document.addEventListener('DOMContentLoaded', () => {
+  const selects = document.querySelectorAll('.custom-select');
+
+  selects.forEach(select => {
+    const head = select.querySelector('.select-head');
+    const options = select.querySelectorAll('.select-option');
+    const selectedText = select.querySelector('.selected-text');
+
+    // Selectni ochish/yopish
+    head.addEventListener('click', (e) => {
+      e.stopPropagation();
+      // Boshqa selectlardan active olib tashlash
+      selects.forEach(s => {
+        if (s !== select) s.classList.remove('active');
+      });
+      select.classList.toggle('active');
+    });
+
+    // Har bir option uchun bosish hodisasi
+    options.forEach(option => {
+      option.addEventListener('click', (e) => {
+        e.stopPropagation();
+        // Tanlangan textni yangilash
+        selectedText.textContent = option.textContent;
+
+        // Active klassni optionlar orasida faqat tanlangan optionga qo'yish
+        options.forEach(opt => opt.classList.remove('active'));
+        option.classList.add('active');
+
+        // Selectni yopish
+        select.classList.remove('active');
+      });
+    });
+  });
+
+  // Tashqariga bosilganda barcha selectlarni yopish
+  window.addEventListener('click', () => {
+    selects.forEach(select => select.classList.remove('active'));
+  });
 });
