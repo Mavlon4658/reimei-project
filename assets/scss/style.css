@@ -136,7 +136,10 @@ body {
   font-style: normal;
 }
 
-button, input, textarea, select {
+button,
+input,
+textarea,
+select {
   font-family: "Gordita", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -202,6 +205,31 @@ button, input, textarea, select {
   transform: rotateZ(180deg);
 }
 
+.view-all {
+  transition: all 0.2s linear;
+}
+.view-all svg,
+.view-all svg path {
+  transition: all 0.2s linear;
+}
+.view-all:hover {
+  color: #d30d0c;
+}
+.view-all:hover svg {
+  transform: translateX(10px);
+}
+.view-all:hover svg path {
+  fill: #d30d0c;
+}
+
+@media screen and (max-width: 600px) {
+  .header {
+    padding-top: 66px;
+  }
+  .header.active {
+    padding-top: 0;
+  }
+}
 .header-top {
   gap: 42px;
   padding: 17px 0 25px;
@@ -211,11 +239,37 @@ button, input, textarea, select {
     display: none !important;
   }
 }
+@media screen and (max-width: 600px) {
+  .header-top {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: #010101;
+    z-index: 9999;
+    display: flex !important;
+    padding: 15px;
+    margin-inline: auto;
+    justify-content: space-between;
+  }
+  .header-top.active {
+    display: none !important;
+  }
+  .header-top > li {
+    display: block;
+  }
+}
 .header-top li {
   font-size: 15px;
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.6;
   gap: 16px;
+}
+@media screen and (max-width: 600px) {
+  .header-top li {
+    gap: 10px;
+    font-size: 13px;
+  }
 }
 .header-top svg {
   width: 17px;
@@ -224,6 +278,16 @@ button, input, textarea, select {
 .header-top a {
   color: white;
   gap: 12px;
+  transition: all 0.2s linear;
+}
+.header-top a path {
+  transition: all 0.2s linear;
+}
+.header-top a:hover {
+  color: #d30d0c;
+}
+.header-top a:hover path {
+  fill: #d30d0c;
 }
 @media screen and (max-width: 1024px) {
   .header-logo img {
@@ -343,9 +407,38 @@ button, input, textarea, select {
     display: none !important;
   }
 }
+.header-bottom .right-text .media-blok__link {
+  display: none;
+}
+@media screen and (max-width: 600px) {
+  .header-bottom .right-text .media-blok__link {
+    display: block;
+  }
+}
 .header-bottom .right-text a {
   font-size: 17px;
   line-height: 1.412;
+  transition: all 0.2s linear;
+  position: relative;
+}
+.header-bottom .right-text a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  -webkit-transform: translate(-50%, 100%);
+  background-color: #d30d0c;
+  opacity: 0;
+  transition: all 0.2s linear;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.header-bottom .right-text a:hover::before {
+  width: 100%;
+  transform: scaleX(1);
+  opacity: 1;
 }
 
 .menu {
@@ -411,29 +504,49 @@ button, input, textarea, select {
 
 .home {
   position: relative;
-}
-.home-swp {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+  padding-top: 40px;
 }
 @media screen and (max-width: 700px) {
   .home-swp {
-    height: 220px;
     position: relative;
+    height: 617px;
   }
 }
 .home-swp .swiper {
   width: 100%;
   height: 100%;
 }
+@media screen and (max-width: 1300px) {
+  .home-swp .swiper {
+    padding-inline: 15px;
+    padding-bottom: 150px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .home-swp .swiper {
+    padding: 0 0 36px 0;
+  }
+}
 .home-swp .swiper-slide {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+@media screen and (max-width: 1300px) {
+  .home-swp .swiper-slide {
+    justify-content: start;
+  }
+  .home-swp .swiper-slide img {
+    position: absolute;
+    top: 0;
+    right: -100px;
+    z-index: -1;
+  }
+}
+@media screen and (max-width: 700px) {
+  .home-swp .swiper-slide {
+    flex-direction: column-reverse;
+  }
 }
 @media screen and (max-width: 1024px) {
   .home-swp .swiper-slide img {
@@ -442,10 +555,12 @@ button, input, textarea, select {
 }
 @media screen and (max-width: 700px) {
   .home-swp .swiper-slide img {
-    width: 100%;
-    height: 100%;
+    width: 300px;
+    height: 185px;
     -o-object-fit: contain;
        object-fit: contain;
+    position: unset;
+    transform: scale(1);
   }
 }
 .home-bg {
@@ -460,16 +575,14 @@ button, input, textarea, select {
 }
 @media screen and (max-width: 700px) {
   .home-bg {
-    height: 220px;
+    height: 383px;
   }
 }
 .home-container {
-  min-height: 740px;
   padding: 60px 0 40px;
 }
 @media screen and (max-width: 1024px) {
   .home-container {
-    min-height: 490px;
     flex-direction: row !important;
     align-items: flex-end !important;
     gap: 80px;
@@ -481,6 +594,15 @@ button, input, textarea, select {
     flex-direction: column !important;
     align-items: flex-start !important;
     gap: 18px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .home-head {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding-left: 15px;
   }
 }
 .home-head h1 {
@@ -1000,6 +1122,10 @@ button, input, textarea, select {
   z-index: 1;
   padding: 0 30px;
   background: linear-gradient(to right, #fffcfc, #f6f5f5);
+  transition: all 0.2s linear;
+}
+.partner-card__bottom a:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 .partner-card__bottom a img {
   position: absolute;
@@ -1017,8 +1143,12 @@ button, input, textarea, select {
   color: white;
 }
 .partner-card.bg-red a {
-  background: #ff0000;
+  background: linear-gradient(90deg, #ff0000, #ff2a00);
+  transition: all 0.2s linear;
   color: white;
+}
+.partner-card.bg-red a:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(255, 94, 0, 0.2);
 }
 @media screen and (max-width: 700px) {
   .partner-card.bg-red a img {
@@ -1093,6 +1223,33 @@ button, input, textarea, select {
   width: 600px;
   flex-shrink: 0;
   gap: 14px;
+}
+.news-card h3 {
+  transition: all 0.2s linear;
+  position: relative;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.news-card h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  -webkit-transform: translate(-50%, 100%);
+  background-color: #d30d0c;
+  opacity: 0;
+  transition: all 0.2s linear;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.news-card:hover h3 {
+  color: #d30d0c;
+}
+.news-card:hover h3::before {
+  transform: scaleX(1);
+  opacity: 1;
 }
 @media screen and (max-width: 1200px) {
   .news-card {
@@ -1310,7 +1467,7 @@ button, input, textarea, select {
     font-size: 20px;
   }
 }
-.service-list a {
+.service-list .link-arrow {
   width: 70px;
   height: 70px;
   display: flex;
@@ -1322,25 +1479,25 @@ button, input, textarea, select {
   flex-shrink: 0;
 }
 @media screen and (max-width: 1024px) {
-  .service-list a {
+  .service-list .link-arrow {
     width: 50px;
     height: 50px;
   }
 }
-.service-list a svg {
+.service-list .link-arrow svg {
   transition: 0.2s ease-in-out;
 }
-.service-list a svg path {
+.service-list .link-arrow svg path {
   transition: 0.2s ease-in-out;
 }
-.service-list a:hover {
+.service-list .link-arrow:hover {
   background: #ff0100;
   border-color: #ff0100;
 }
-.service-list a:hover svg {
+.service-list .link-arrow:hover svg {
   transform: rotateZ(45deg);
 }
-.service-list a:hover svg path {
+.service-list .link-arrow:hover svg path {
   fill: white;
 }
 
@@ -1406,6 +1563,12 @@ button, input, textarea, select {
   width: 16px;
   height: 16px;
 }
+.footer-left ul svg path {
+  transition: all 0.2s linear;
+}
+.footer-left ul svg:hover path {
+  fill: #d30d0c;
+}
 .footer-navs__wrap {
   gap: 70px;
 }
@@ -1425,6 +1588,29 @@ button, input, textarea, select {
   line-height: 1.875;
   font-weight: 500;
   color: #919191;
+  transition: all 0.2s linear;
+  position: relative;
+}
+.footer-navs a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  -webkit-transform: translate(-50%, 100%);
+  background-color: #d30d0c;
+  opacity: 0;
+  transition: all 0.2s linear;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.footer-navs a:hover {
+  color: #d30d0c;
+}
+.footer-navs a:hover::before {
+  transform: scaleX(1);
+  opacity: 1;
 }
 .footer-right {
   width: 320px;
@@ -1482,6 +1668,21 @@ button, input, textarea, select {
   font-size: 16px;
   line-height: 1.875;
   font-weight: 500;
+  transition: all 0.2s linear;
+}
+.footer-right a path,
+.footer-right a svg {
+  transition: all 0.2s linear;
+}
+.footer-right a:hover {
+  background-color: #d30d0c;
+  color: #fff;
+}
+.footer-right a:hover svg path {
+  fill: #fff;
+}
+.footer-right a:hover svg {
+  transform: rotate(45deg);
 }
 .footer-right a svg {
   width: 12px;
