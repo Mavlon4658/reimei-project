@@ -225,7 +225,7 @@ button, input, textarea, select {
   color: white;
   gap: 12px;
 }
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1024px) {
   .header-logo img {
     display: none;
   }
@@ -420,6 +420,12 @@ button, input, textarea, select {
   height: 100%;
   z-index: -1;
 }
+@media screen and (max-width: 700px) {
+  .home-swp {
+    height: 220px;
+    position: relative;
+  }
+}
 .home-swp .swiper {
   width: 100%;
   height: 100%;
@@ -428,6 +434,19 @@ button, input, textarea, select {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+@media screen and (max-width: 1024px) {
+  .home-swp .swiper-slide img {
+    transform: scale(0.7);
+  }
+}
+@media screen and (max-width: 700px) {
+  .home-swp .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
 }
 .home-bg {
   position: absolute;
@@ -439,9 +458,30 @@ button, input, textarea, select {
   -o-object-fit: cover;
      object-fit: cover;
 }
+@media screen and (max-width: 700px) {
+  .home-bg {
+    height: 220px;
+  }
+}
 .home-container {
   min-height: 740px;
   padding: 60px 0 40px;
+}
+@media screen and (max-width: 1024px) {
+  .home-container {
+    min-height: 490px;
+    flex-direction: row !important;
+    align-items: flex-end !important;
+    gap: 80px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .home-container {
+    padding: 0 0 35px;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 18px;
+  }
 }
 .home-head h1 {
   margin-bottom: 40px;
@@ -451,12 +491,45 @@ button, input, textarea, select {
   font-size: 50px;
 }
 .home-head h1 span {
-  font-size: 80px;
   display: block;
+}
+@media screen and (min-width: 1024px) {
+  .home-head h1 span {
+    font-size: 80px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .home-head h1 {
+    font-size: 55.249px;
+    margin-bottom: 50px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .home-head h1 {
+    margin-bottom: 24px;
+  }
 }
 .home-head ul {
   padding: 35px;
   background: #ff0100;
+}
+@media screen and (max-width: 1024px) {
+  .home-head ul {
+    width: 300px;
+    min-width: 300px;
+    margin-left: -20px;
+    padding: 30px 40px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .home-head ul {
+    padding: 20px 60px 20px 15px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .home-head ul {
+    margin-left: -15px;
+  }
 }
 .home-head ul li {
   font-size: 17px;
@@ -472,9 +545,28 @@ button, input, textarea, select {
 }
 .home-bottom ul {
   gap: 20px;
+  flex-shrink: 0;
+}
+@media screen and (max-width: 1024px) {
+  .home-bottom ul {
+    gap: 16px;
+  }
+}
+.home-bottom ul li {
+  flex-shrink: 0;
+}
+@media screen and (max-width: 1024px) {
+  .home-bottom ul img {
+    width: 46px;
+  }
 }
 .home-bottom__right {
   gap: 240px;
+}
+@media screen and (max-width: 1024px) {
+  .home-bottom__right {
+    gap: 0px;
+  }
 }
 .home-bottom .swp-fraction {
   font-size: 18px;
@@ -484,6 +576,11 @@ button, input, textarea, select {
   display: flex;
   align-items: center;
   gap: 4px;
+}
+@media screen and (max-width: 1024px) {
+  .home-bottom .swp-fraction {
+    display: none;
+  }
 }
 .home-bottom .swp-fraction span {
   font-size: 36px;
@@ -501,6 +598,43 @@ button, input, textarea, select {
   justify-content: center;
   border-radius: 50%;
   border: 1px solid white;
+}
+@media screen and (max-width: 1024px) {
+  .home-bottom .swp-btns button {
+    width: 50px;
+    height: 50px;
+  }
+}
+.home-text {
+  background: #ff0000;
+  padding: 24px 0;
+}
+@media screen and (max-width: 1024px) {
+  .home-text {
+    padding: 13px 0;
+  }
+}
+.home-text .container {
+  gap: 25px;
+}
+@media screen and (max-width: 600px) {
+  .home-text .container {
+    gap: 12px;
+  }
+}
+.home-text img {
+  flex-shrink: 0;
+}
+.home-text p {
+  font-size: 20px;
+  color: rgb(252, 250, 250);
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+@media screen and (max-width: 600px) {
+  .home-text p {
+    font-size: 15px;
+  }
 }
 
 .popular {
