@@ -1822,10 +1822,15 @@ select {
 // contact page
 .contact-intro {
   overflow: hidden;
+  position: relative;
   .container {
     padding: 125px 0 189px 0;
     position: relative;
     z-index: 1;
+    @include media(768) {
+      position: unset;
+      padding: 80px 0;
+    }
   }
   &__bg {
     position: absolute;
@@ -1833,18 +1838,35 @@ select {
     right: -150px;
     width: 1082px;
     z-index: -1;
+    height: 100%;
+    @include media(768) {
+      object-fit: cover;
+      width: calc(100% + 30px);
+      right: unset;
+      left: 0;
+    }
   }
   .title {
     font-size: 72px;
     font-weight: 500;
     margin-top: 38px;
     letter-spacing: -2px;
+    @include media(1200) {
+      font-size: 35px;
+    }
   }
   &__desc {
     transform: translateY(50px);
     font-size: 30px;
     line-height: 30px;
     font-weight: 500;
+    @include media(1200) {
+      font-size: 16px;
+    }
+    @include media(768) {
+      transform: translateY(0);
+      margin-top: 20px;
+    }
   }
 }
 
@@ -1852,20 +1874,37 @@ select {
   background-color: #fff;
   padding: 149px 0 108px 0;
   color: #010101;
+  @include media(992) {
+    padding-block: 50px;
+  }
   &__title {
     font-size: 40px;
     font-weight: 500;
+    @include media(992) {
+      font-size: 30px;
+      br {
+        display: none;
+      }
+    }
   }
   &__text {
     font-size: 20px;
     line-height: 30px;
     font-weight: 500;
     margin-bottom: 40px;
+    @include media(992) {
+      font-size: 16px;
+      margin-bottom: 20px;
+      line-height: 20px;
+    }
     &.text-mute {
       color: #555555;
       margin-bottom: 33px;
       display: flex;
       align-items: center;
+      @include media(768) {
+        margin-bottom: 15px;
+      }
     }
   }
   .line {
@@ -1876,6 +1915,9 @@ select {
   }
   .info-box {
     margin-top: 57px;
+    @include media(768) {
+      margin-top: 16px;
+    }
   }
   .email-text {
     display: flex;
@@ -1887,28 +1929,74 @@ select {
     .line {
       width: 70px;
     }
+    @include media(1024) {
+      font-size: 60px;
+      .line {
+        min-width: 50px;
+        max-width: 50px;
+      }
+    }
+    @include media(768) {
+      font-size: 30px;
+      margin-top: 20px;
+      flex-direction: row-reverse;
+      justify-content: start;
+      gap: 10px;
+      .line {
+        min-width: 30px;
+        max-width: 30px;
+      }
+    }
   }
 }
 .contact-us {
   display: flex;
   align-items: stretch;
-
+  @include media(768) {
+    flex-direction: column;
+  }
   & > div {
     width: 50%;
+    @include media(768) {
+      width: 100%;
+    }
+  }
+  .map {
+    @include media(768) {
+      height: 300px;
+    }
   }
   .contact {
     padding: 135px 0 140px 85px;
+    @include media(1100) {
+      padding: 80px 0 80px 40px;
+    }
+    @include media(992) {
+      padding: 50px 30px;
+    }
+    @include media(768) {
+      padding-inline: 15px;
+    }
     form {
       width: 430px;
       display: flex;
       flex-direction: column;
       gap: 40px;
+      @include media(992) {
+        width: 100%;
+      }
+      @include media(768) {
+        gap: 20px;
+      }
     }
     h3 {
       font-size: 20px;
       line-height: 30px;
       font-weight: 500;
       margin-bottom: 78px;
+      @include media(992) {
+        margin-bottom: 20px;
+      }
     }
     label {
       font-size: 15px;
@@ -1925,8 +2013,10 @@ select {
       &::placeholder {
         color: #585757;
       }
-    }
-    .send-btn {
+      @include media(768) {
+        padding-block: 15px;
+        font-size: 16px;
+      }
     }
   }
 }
@@ -1943,11 +2033,19 @@ select {
   border-radius: 100px;
   font-size: 17px;
   color: #fff;
-  transition: all .2s linear;
+  transition: all 0.2s linear;
   border: 1px solid transparent;
   &:hover {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(255, 94, 0, 0.2);
     border-color: #f50e04;
     background-color: transparent;
+  }
+  @include media(768) {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-size: 16px;
   }
 }
