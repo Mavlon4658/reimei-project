@@ -2202,3 +2202,163 @@ select {
     }
   }
 }
+
+// about-page
+.about-sec {
+  background-color: #fff;
+  padding: 122px 0 90px 0;
+  color: #010101;
+  .section-title {
+    padding: 43px 0 100px 0;
+  }
+  .desc-box {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    p {
+      font-size: 20px;
+      line-height: 30px;
+      font-weight: 500;
+    }
+  }
+  .left-box {
+    position: relative;
+    .red-box {
+      padding: 34px 34px 34px 47px;
+      background-color: #f50e04;
+      color: #fff;
+      position: absolute;
+      top: 180px;
+      left: 25px;
+      width: 247px;
+
+      h3 {
+        font-size: 20px;
+        font-weight: 500;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: 72px;
+        font-weight: 500;
+        margin-block: 24px;
+      }
+    }
+  }
+  .sidebars {
+    display: flex;
+    align-items: start;
+    gap: 30px;
+    margin-bottom: 90px;
+    .left-sidebar {
+      width: 370px;
+    }
+    .right-sidebar {
+      max-width: 670px;
+    }
+    .about-logo {
+      margin-left: auto;
+      display: block;
+    }
+  }
+}
+
+// about-gallerys
+.about-gallerys {
+  background-color: #fff;
+  padding-bottom: 140px;
+  .container {
+    display: flex;
+    align-items: start;
+    gap: 30px;
+  }
+  .left-images {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    width: 246px;
+    img {
+      object-fit: cover;
+      width: 100%;
+      &:first-child {
+        height: 180px;
+      }
+      &:last-child {
+        height: 240px;
+      }
+    }
+  }
+  .midle-img {
+    width: 570px;
+    height: 500px;
+    object-fit: cover;
+  }
+  .right-image {
+    width: 248px;
+    height: 292px;
+    object-fit: cover;
+    margin-top: auto;
+  }
+}
+
+// our-services
+.our-services {
+  padding: 142px 0 140px 0;
+  .container {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .bird-logo {
+    position: absolute;
+    bottom: -178px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+  }
+  .desc {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 36px;
+  }
+  .info-box {
+    width: 665px;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    position: relative;
+    padding-bottom: 100px;
+  }
+  .line-box {
+    height: calc(100% + 152px);
+    position: absolute;
+    left: -82px;
+    top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #f50e04;
+    }
+    .line {
+      height: 100%;
+      width: 1px;
+      background-color: #605e5c;
+    }
+  }
+  .bird-video {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    transform: translateX(-180px);
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
