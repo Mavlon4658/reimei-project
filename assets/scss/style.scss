@@ -2033,12 +2033,18 @@ select {
   border-radius: 100px;
   font-size: 17px;
   color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.2s linear;
   border: 1px solid transparent;
   &:hover {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(255, 94, 0, 0.2);
     border-color: #f50e04;
     background-color: transparent;
+    &.black-text {
+      color: #010101;
+    }
   }
   @include media(768) {
     height: 40px;
@@ -2047,5 +2053,152 @@ select {
     justify-content: center;
     padding: 10px;
     font-size: 16px;
+  }
+}
+.section-title {
+  font-size: 72px;
+  font-weight: 500;
+  @include media(992) {
+    font-size: 50px;
+  }
+  @include media(768) {
+    font-size: 40px;
+  }
+}
+// services page
+.services-sec {
+  background-color: #fff;
+  color: #010101;
+  padding: 125px 0 142px 0;
+  @include media(768) {
+    padding-block: 50px;
+  }
+
+  .section-title {
+    margin: 40px 0 80px;
+    @include media(768) {
+      margin: 20px 0 30px 0;
+    }
+  }
+  .red-btn {
+    width: 260px;
+    height: 50px;
+  }
+  .info-title {
+    font-size: 40px;
+    font-weight: 500;
+    @include media(992) {
+      font-size: 30px;
+    }
+    @include media(768) {
+      font-size: 25px;
+    }
+  }
+  .service-img {
+    height: 640px;
+    @include media(768) {
+      height: 300px;
+    }
+    img {
+      padding-right: 40px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      @include media(992) {
+        padding-right: 0;
+      }
+    }
+  }
+  .right-box {
+    padding-top: 22px;
+    @include media(992) {
+      padding-top: 0;
+    }
+  }
+  .info-box {
+    padding: 45px 0 48px 0;
+    @include media(768) {
+      padding: 20px 0;
+    }
+  }
+  .desc,
+  li {
+    font-size: 17px;
+    line-height: 30px;
+    font-weight: 400;
+    @include media(768) {
+      font-size: 16px;
+    }
+  }
+  b {
+    font-weight: 500 !important;
+    margin-block: 40px;
+    display: block;
+    @include media(768) {
+      margin-block: 20px;
+    }
+  }
+  ul {
+    padding-bottom: 40px;
+    @include media(768) {
+      padding-bottom: 20px;
+    }
+  }
+  li {
+    padding-left: 22px;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      background-color: #eb0e09;
+      border-radius: 50%;
+      width: 6px;
+      height: 6px;
+    }
+  }
+
+  .bottom-box {
+    margin-top: 98px;
+    @include media(768) {
+      margin-top: 26px;
+    }
+    .right-box {
+      text-align: right;
+      @include media(768) {
+        text-align: left;
+      }
+    }
+    .desc {
+      width: 493px;
+      @include media(1024) {
+        width: 100%;
+      }
+      @include media(768) {
+        br {
+          display: none;
+        }
+      }
+    }
+    .service-img img {
+      padding-right: 0;
+      padding-left: 40px;
+      @include media(1024) {
+        padding-left: 0;
+      }
+    }
+    .red-btn {
+      margin-left: auto;
+    }
+    .info-box {
+      padding-bottom: 37px;
+    }
+  }
+  .red-btn {
+    @include media(768) {
+      width: 100%;
+    }
   }
 }
