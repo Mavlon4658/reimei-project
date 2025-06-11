@@ -2782,4 +2782,326 @@ select {
     font-size: 38px;
     margin-top: 15px;
   }
+}
+
+.printers-intro .top-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 130px 70px 90px 0;
+}
+@media screen and (max-width: 992px) {
+  .printers-intro .top-box {
+    padding: 50px 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .printers-intro .top-box {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+}
+.printers-intro .top-box h2 {
+  width: 534px;
+  font-size: 72px;
+  font-weight: 500;
+}
+@media screen and (max-width: 992px) {
+  .printers-intro .top-box h2 {
+    font-size: 60px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .printers-intro .top-box h2 {
+    width: 100%;
+    font-size: 40px;
+  }
+}
+.printers-intro .top-box p {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 500;
+  width: 300px;
+}
+@media screen and (max-width: 992px) {
+  .printers-intro .top-box p {
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .printers-intro .top-box p {
+    width: 100%;
+    font-weight: 400;
+  }
+}
+.printers-intro .bottom-box {
+  display: flex;
+  align-items: start;
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  .printers-intro .bottom-box {
+    flex-direction: column;
+  }
+}
+.printers-intro .bottom-box .scroll-down {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  background-color: #f50e04;
+  position: absolute;
+  top: 110px;
+  right: 78px;
+}
+@media screen and (max-width: 768px) {
+  .printers-intro .bottom-box .scroll-down {
+    width: 80px;
+    height: 80px;
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .printers-intro .bottom-box .scroll-down {
+    display: none;
+  }
+}
+.printers-intro .bottom-box .speed-box {
+  min-width: 100px;
+  max-width: 100px;
+  height: 500px;
+  background: linear-gradient(to bottom, #ff0000 0%, #000000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  .printers-intro .bottom-box .speed-box {
+    width: 100%;
+    max-width: 100%;
+    height: 60px;
+  }
+}
+.printers-intro .bottom-box .speed-box span {
+  writing-mode: vertical-lr;
+  font-size: 15px;
+  line-height: 30px;
+  text-transform: uppercase;
+  transform: rotate(180deg);
+  margin-left: -10px;
+  color: #f2f2f2;
+  letter-spacing: 3px;
+}
+@media screen and (max-width: 768px) {
+  .printers-intro .bottom-box .speed-box span {
+    writing-mode: horizontal-tb;
+    transform: rotate(0);
+  }
+}
+.printers-intro .bottom-box .speed-box img {
+  margin-top: 20px;
+}
+@media screen and (max-width: 768px) {
+  .printers-intro .bottom-box .speed-box img {
+    display: none;
+  }
+}
+.printers-intro .bottom-box .speed-table {
+  height: 500px;
+  overflow-y: auto;
+}
+@media screen and (max-width: 450px) {
+  .printers-intro .bottom-box .speed-table {
+    overflow: hidden;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+}
+.printers-intro .bottom-box .speed-table::-webkit-scrollbar {
+  display: none;
+}
+
+.choos-sec {
+  background-color: #f2f2f2;
+  padding: 62px 0 64px 0;
+}
+@media screen and (max-width: 768px) {
+  .choos-sec {
+    padding: 50px 0;
+  }
+}
+.choos-sec__container {
+  display: grid;
+  grid-template-columns: 310px 445px 270px;
+  gap: 20px;
+  justify-content: space-between;
+}
+@media screen and (max-width: 1120px) {
+  .choos-sec__container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 992px) {
+  .choos-sec__container {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+}
+.choos-sec .choos-box h2 {
+  font-size: 26px;
+  line-height: 30px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 24px;
+}
+@media screen and (max-width: 768px) {
+  .choos-sec .choos-box h2 {
+    font-size: 22px;
+    line-height: 25px;
+    margin-bottom: 15px;
+  }
+}
+.choos-sec .choos-box .choos-btns {
+  display: flex;
+  gap: 20px 10px;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 768px) {
+  .choos-sec .choos-box .choos-btns {
+    gap: 10px;
+  }
+}
+.choos-sec .choos-box .choos-btn {
+  padding: 0 35px;
+  border: 1px solid #a9a9a9;
+  border-radius: 100px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 500;
+}
+@media screen and (max-width: 768px) {
+  .choos-sec .choos-box .choos-btn {
+    flex: 1 1 auto;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+.choos-sec .choos-box .choos-btn.active {
+  color: #fff;
+  background-color: #010101;
+}
+
+.printer-models {
+  padding-top: 92px;
+  background-color: #fff;
+  color: #010101;
+}
+@media screen and (max-width: 768px) {
+  .printer-models {
+    padding-top: 50px;
+  }
+}
+.printer-models .title {
+  margin-bottom: 64px;
+  font-size: 40px;
+  font-weight: 500;
+}
+@media screen and (max-width: 768px) {
+  .printer-models .title {
+    margin-bottom: 30px;
+    font-size: 35px;
+  }
+}
+.printer-models .models {
+  border-bottom: 1px solid #e0dedc;
+  padding-bottom: 63px;
+  margin-bottom: 50px;
+}
+.printer-models .models:last-child {
+  margin-bottom: 0;
+}
+@media screen and (max-width: 992px) {
+  .printer-models .models {
+    padding-bottom: 0;
+    border: none;
+  }
+}
+.printer-models .models-container {
+  max-width: 1824px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+@media screen and (max-width: 1850px) {
+  .printer-models .models-container {
+    max-width: calc(100% - 30px);
+  }
+}
+@media screen and (max-width: 992px) {
+  .printer-models .models-container {
+    overflow-x: auto;
+    display: flex;
+    gap: 20px;
+    padding-bottom: 30px;
+  }
+  .printer-models .models-container > div {
+    min-width: 250px;
+    max-width: 250px;
+  }
+  .printer-models .models-container::-webkit-scrollbar {
+    background: #e0dedc;
+    height: 5px;
+    border-radius: 10px;
+  }
+  .printer-models .models-container::-webkit-scrollbar-thumb {
+    background: #434241;
+    height: 5px;
+    border-radius: 10px;
+  }
+}
+.printer-models .models-card__img {
+  min-width: 230px;
+  width: 100%;
+  height: 180px;
+}
+.printer-models .models-card__img img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 100%;
+  width: 100%;
+}
+.printer-models .models-card__name {
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 42px;
+  position: relative;
+}
+.printer-models .models-card__name::after {
+  content: "";
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: #e30611;
+}
+.printer-models .models-card__info {
+  padding-left: 16px;
+}
+.printer-models .models-card__info li {
+  list-style: disc;
+  font-size: 16px;
+  line-height: 30px;
+  color: #777776;
+}
+.printer-models .models-card__info li::marker {
+  color: red;
 }/*# sourceMappingURL=style.css.map */
