@@ -2208,8 +2208,17 @@ select {
   background-color: #fff;
   padding: 122px 0 90px 0;
   color: #010101;
+  @include media(768) {
+    padding-block: 50px;
+  }
   .section-title {
     padding: 43px 0 100px 0;
+    @include media(768) {
+      padding-block: 20px;
+      br {
+        display: none;
+      }
+    }
   }
   .desc-box {
     display: flex;
@@ -2223,6 +2232,11 @@ select {
   }
   .left-box {
     position: relative;
+    @include media(768) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
     .red-box {
       padding: 34px 34px 34px 47px;
       background-color: #f50e04;
@@ -2231,16 +2245,26 @@ select {
       top: 180px;
       left: 25px;
       width: 247px;
+      @include media(768) {
+        padding: 32px 20px;
+      }
 
       h3 {
         font-size: 20px;
         font-weight: 500;
         text-transform: uppercase;
+        @include media(768) {
+          font-size: 18px;
+        }
       }
       h2 {
         font-size: 72px;
         font-weight: 500;
         margin-block: 24px;
+        @include media(768) {
+          font-size: 50px;
+          margin-block: 15px;
+        }
       }
     }
   }
@@ -2249,15 +2273,41 @@ select {
     align-items: start;
     gap: 30px;
     margin-bottom: 90px;
+    @include media(768) {
+      flex-direction: column;
+      margin-bottom: 0;
+    }
     .left-sidebar {
       width: 370px;
+      @include media(768) {
+        width: 100%;
+        margin-bottom: 80px;
+      }
     }
     .right-sidebar {
       max-width: 670px;
+      @include media(992) {
+        max-width: 400px;
+        margin-left: auto;
+      }
+      @include media(768) {
+        margin-left: 0;
+        max-width: 100%;
+        .desc-box {
+          gap: 20px;
+        }
+        p {
+          font-size: 16px;
+          line-height: 22px;
+        }
+      }
     }
     .about-logo {
       margin-left: auto;
       display: block;
+      @include media(768) {
+        margin-left: 0;
+      }
     }
   }
 }
@@ -2266,21 +2316,44 @@ select {
 .about-gallerys {
   background-color: #fff;
   padding-bottom: 140px;
+  @include media(768) {
+    padding-bottom: 50px;
+  }
   .container {
     display: flex;
     align-items: start;
     gap: 30px;
+    flex-wrap: wrap;
+    @include media(992) {
+      flex-direction: column;
+      gap: 15px;
+    }
   }
   .left-images {
     display: flex;
     flex-direction: column;
     gap: 26px;
-    width: 246px;
+    min-width: 246px;
+    max-width: 246px;
+    @include media(992) {
+      flex-direction: row;
+      max-width: 100%;
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    @include media(768) {
+      flex-direction: column;
+    }
     img {
       object-fit: cover;
       width: 100%;
       &:first-child {
         height: 180px;
+        @include media(992) {
+          height: 240px;
+        }
       }
       &:last-child {
         height: 240px;
@@ -2291,22 +2364,29 @@ select {
     width: 570px;
     height: 500px;
     object-fit: cover;
+    @include media(992) {
+      width: 100%;
+    }
   }
   .right-image {
     width: 248px;
     height: 292px;
     object-fit: cover;
     margin-top: auto;
+    @include media(992) {
+      width: 100%;
+    }
   }
 }
 
 // our-services
 .our-services {
   padding: 142px 0 140px 0;
-  .container {
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  @include media(768) {
+    padding: 50px 0;
   }
   .bird-logo {
     position: absolute;
@@ -2314,11 +2394,17 @@ select {
     left: 50%;
     transform: translateX(-50%);
     z-index: -1;
+    filter: brightness(0) saturate(100%) invert(10%) sepia(8%) saturate(920%)
+      hue-rotate(350deg);
   }
   .desc {
     font-size: 20px;
     font-weight: 500;
     line-height: 36px;
+    @include media(768) {
+      font-size: 16px;
+      line-height: 22px;
+    }
   }
   .info-box {
     width: 665px;
@@ -2328,6 +2414,15 @@ select {
     gap: 50px;
     position: relative;
     padding-bottom: 100px;
+    @include media(1090) {
+      width: 500px;
+    }
+    @include media(768) {
+      width: 100%;
+      gap: 20px;
+      margin-top: 20px;
+      padding-bottom: 50px;
+    }
   }
   .line-box {
     height: calc(100% + 152px);
@@ -2338,6 +2433,13 @@ select {
     flex-direction: column;
     gap: 20px;
     align-items: center;
+    @include media(992) {
+      left: -50px;
+      height: calc(100% + 100px);
+    }
+    @include media(768) {
+      display: none;
+    }
     .dot {
       width: 8px;
       height: 8px;
@@ -2355,10 +2457,76 @@ select {
     height: 200px;
     border-radius: 50%;
     transform: translateX(-180px);
+    position: relative;
+    @include media(992) {
+      transform: translateX(-155px);
+    }
+    @include media(768) {
+      transform: none;
+      margin-top: -20px;
+    }
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+    .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #000;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      img {
+        width: 12px;
+        height: 15px;
+      }
+    }
+  }
+}
+
+// customer-services
+.customer-services {
+  background-color: #fff;
+  padding: 105px 0 95px 0;
+  color: #010101;
+  @include media(768) {
+    padding: 50px 0;
+  }
+  h4 {
+    font-size: 26px;
+    line-height: 30px;
+    font-weight: 500;
+    position: relative;
+    @include media(768) {
+      padding-left: 60px;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -100px;
+      width: 70px;
+      height: 2px;
+      background-color: #f50e04;
+      @include media(768) {
+        left: 0;
+        width: 50px;
+      }
+    }
+  }
+  .email {
+    margin-top: 24px;
+    font-weight: 500;
+    font-size: 100px;
+    @include media(992) {
+      font-size: 75px;
+    }
+    @include media(768) {
+      font-size: 38px;
+      margin-top: 15px;
     }
   }
 }
