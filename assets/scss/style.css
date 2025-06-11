@@ -3279,4 +3279,65 @@ select {
   font-size: 17px;
   line-height: 30px;
   font-weight: 300;
+}
+
+.models-intro {
+  padding: 30px 0 175px 0;
+  background: url(../images/mountin.png) no-repeat;
+  background-position: 70% -45px;
+}
+.models-intro .breadcrumbs {
+  gap: 10px;
+}
+.models-intro .breadcrumbs a {
+  color: #595858;
+  font-size: 14px;
+  font-weight: 300;
+}
+.models-intro__wrapper {
+  display: flex;
+  align-items: start;
+  gap: 48px;
+  justify-content: space-between;
+}
+.models-intro__wrapper .content {
+  width: 322px;
+  padding-top: 84px;
+}
+.models-intro__wrapper .content p {
+  font-display: 20px;
+  line-height: 30px;
+  font-weight: 500;
+  padding: 42px 0 84px 0;
+}
+.models-intro__wrapper .content .red-btn {
+  height: 50px;
+}
+.models-intro__wrapper .content .red-btn:last-child {
+  margin-top: 20px;
+}
+.models-intro__wrapper .right-box {
+  flex: 1 1 auto;
+}
+.models-intro__wrapper .right-box .logos {
+  gap: 20px;
+}
+.models-intro__wrapper .right-box__info {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+.models-intro__wrapper .right-box__img {
+  margin: 21px 0 13px 0;
+}
+.models-intro__wrapper .model-info {
+  padding-left: 18px;
+}
+.models-intro__wrapper .model-info li {
+  list-style: disc;
+  font-size: 17px;
+  line-height: 30px;
+}
+.models-intro__wrapper .model-info li::marker {
+  color: #e40000;
 }/*# sourceMappingURL=style.css.map */
