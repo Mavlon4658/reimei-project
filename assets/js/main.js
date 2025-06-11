@@ -67,6 +67,12 @@ const homeSwp = new Swiper('.home-swp .swiper', {
   }
 })
 
+const modelsSlider = new Swiper('.models-slider', {
+  slidesPerView: 1.9,
+  speed: 800,
+   spaceBetween: 80,
+})
+
 try {
   if (homeSwp) {
     const swpFraction = document.querySelector('.home-bottom__right .swp-fraction');
