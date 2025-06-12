@@ -1191,12 +1191,9 @@ select {
   color: white;
 }
 .partner-card.bg-red a {
-  background: linear-gradient(90deg, #ff0000, #ff2a00);
+  background: linear-gradient(90deg, #f52222, #e40000);
   transition: all 0.2s linear;
   color: white;
-}
-.partner-card.bg-red a:hover {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(255, 94, 0, 0.2);
 }
 @media screen and (max-width: 700px) {
   .partner-card.bg-red a img {
