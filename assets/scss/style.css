@@ -335,6 +335,16 @@ select {
 .header-bottom {
   border-top: 1px solid #222222;
   border-bottom: 1px solid #222222;
+  position: relative;
+}
+.header-bottom::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #222222;
 }
 @media screen and (max-width: 1024px) {
   .header-bottom {
@@ -1780,6 +1790,10 @@ select {
   height: 60px;
   display: flex;
   align-items: center;
+  transition: all 0.2s linear;
+}
+.custom-select:hover {
+  background-color: #f0f0f0;
 }
 @media screen and (max-width: 700px) {
   .custom-select {
@@ -1821,10 +1835,15 @@ select {
 .custom-select .select-option {
   cursor: pointer;
   padding: 10px;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
 }
 .custom-select .select-option:hover, .custom-select .select-option.active {
   color: #fff;
   background-color: #878787;
+}
+.custom-select .select-option.active {
+  border-color: #000;
 }
 
 .paginations {
@@ -2953,6 +2972,8 @@ select {
 .printers-intro .bottom-box .scroll-down {
   width: 120px;
   height: 120px;
+  z-index: 100;
+  cursor: pointer;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -3018,17 +3039,31 @@ select {
 }
 .printers-intro .bottom-box .speed-table {
   height: 500px;
-  overflow-y: auto;
+  width: 100%;
+}
+.printers-intro .bottom-box .speed-table .swiper-wrapper {
+  flex-direction: column;
+}
+.printers-intro .bottom-box .speed-table .swiper-slide {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.printers-intro .bottom-box .speed-table .swiper-slide img {
+  max-width: 100%;
+  height: auto;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 @media screen and (max-width: 450px) {
   .printers-intro .bottom-box .speed-table {
-    overflow: hidden;
     height: -moz-fit-content;
     height: fit-content;
+    overflow: hidden;
   }
-}
-.printers-intro .bottom-box .speed-table::-webkit-scrollbar {
-  display: none;
 }
 
 .choos-sec {
@@ -3129,12 +3164,20 @@ select {
 }
 .printer-models .models {
   border-bottom: 1px solid #e0dedc;
+}
+.printer-models .models.first-child {
   border-top: 1px solid #e0dedc;
 }
 @media screen and (max-width: 992px) {
   .printer-models .models {
     padding-bottom: 0;
   }
+}
+.printer-models .models:last-child .models-card:nth-child(3) {
+  border-bottom: none;
+}
+.printer-models .models:last-child .models-card:nth-child(3) {
+  border-bottom: 1px solid #e0dedc;
 }
 .printer-models .models-container {
   max-width: 1824px;
@@ -3149,9 +3192,8 @@ select {
 }
 @media screen and (max-width: 992px) {
   .printer-models .models-container {
-    overflow-x: auto;
-    display: flex;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
   .printer-models .models-container > div {
     min-width: 250px;
@@ -3168,11 +3210,34 @@ select {
     border-radius: 10px;
   }
 }
+@media screen and (max-width: 700px) {
+  .printer-models .models-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-right: 0;
+    margin-left: 0;
+    max-width: 100%;
+  }
+}
 .printer-models .models-card {
   border-right: 1px solid #e2dfdd;
   padding-bottom: 63px;
   padding-left: 10px;
   padding-top: 50px;
+}
+@media screen and (max-width: 992px) {
+  .printer-models .models-card {
+    border-bottom: 1px solid #e2dfdd;
+  }
+  .printer-models .models-card:last-child {
+    border: none;
+  }
+}
+@media screen and (max-width: 700px) {
+  .printer-models .models-card {
+    padding-right: 10px;
+    border-bottom: 1px solid #e2dfdd;
+  }
 }
 .printer-models .models-card:hover .models-card__img img {
   transform: scale(1.1);
@@ -3590,7 +3655,7 @@ select {
 }
 @media screen and (max-width: 992px) {
   .models-intro__wrapper {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 }
 .models-intro__wrapper .content {
@@ -3766,6 +3831,7 @@ select {
 .models-slider {
   position: relative;
   padding-left: 58px;
+  cursor: none;
 }
 @media screen and (max-width: 1200px) {
   .models-slider {
@@ -3785,11 +3851,14 @@ select {
   justify-content: center;
   font-size: 17px;
   text-transform: uppercase;
-  position: absolute;
-  top: 50%;
-  left: 56%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(0, 0); /* Bu qism olib tashlanadi */
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 @media screen and (max-width: 768px) {
   .models-slider .drag-box {

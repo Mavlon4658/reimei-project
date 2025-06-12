@@ -212,7 +212,16 @@ select {
   &-bottom {
     border-top: 1px solid #222222;
     border-bottom: 1px solid #222222;
-
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #222222;
+    }
     @include media(1024) {
       border-top: 0;
     }
@@ -1692,6 +1701,10 @@ select {
   height: 60px;
   display: flex;
   align-items: center;
+  transition: all 0.2s linear;
+  &:hover {
+    background-color: #f0f0f0;
+  }
   @include media(700) {
     height: 40px;
   }
@@ -1730,10 +1743,15 @@ select {
   .select-option {
     cursor: pointer;
     padding: 10px;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
     &:hover,
     &.active {
       color: #fff;
       background-color: #878787;
+    }
+    &.active {
+      border-color: #000;
     }
   }
 }
@@ -2691,6 +2709,8 @@ select {
     .scroll-down {
       width: 120px;
       height: 120px;
+      z-index: 100;
+      cursor: pointer;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -2746,13 +2766,26 @@ select {
     }
     .speed-table {
       height: 500px;
-      overflow-y: auto;
-      @include media(450) {
-        overflow: hidden;
-        height: fit-content;
+      width: 100%;
+      .swiper-wrapper {
+        flex-direction: column;
       }
-      &::-webkit-scrollbar {
-        display: none;
+      .swiper-slide {
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          max-width: 100%;
+          height: auto;
+          pointer-events: none;
+          user-select: none;
+        }
+      }
+
+      @include media(450) {
+        height: fit-content;
+        overflow: hidden;
       }
     }
   }
@@ -2843,11 +2876,24 @@ select {
   }
   .models {
     border-bottom: 1px solid #e0dedc;
-    border-top: 1px solid #e0dedc;
-
+    &.first-child {
+      border-top: 1px solid #e0dedc;
+    }
     @include media(992) {
       padding-bottom: 0;
       // border: none;
+    }
+    &:last-child {
+      .models-card:nth-child(3) {
+        border-bottom: none;
+      }
+    }
+    @include media(700) {
+    }
+    &:last-child {
+      .models-card:nth-child(3) {
+     border-bottom: 1px solid #e0dedc;
+      }
     }
   }
   .models-container {
@@ -2859,9 +2905,8 @@ select {
       max-width: calc(100% - 30px);
     }
     @include media(992) {
-      overflow-x: auto;
-      display: flex;
-      gap: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       & > div {
         min-width: 250px;
         max-width: 250px;
@@ -2877,12 +2922,29 @@ select {
         border-radius: 10px;
       }
     }
+    @include media(700) {
+      display: grid;
+      grid-template-columns: 1fr;
+      margin-right: 0;
+      margin-left: 0;
+      max-width: 100%;
+    }
   }
   .models-card {
     border-right: 1px solid #e2dfdd;
     padding-bottom: 63px;
     padding-left: 10px;
     padding-top: 50px;
+    @include media(992) {
+      border-bottom: 1px solid #e2dfdd;
+      &:last-child {
+        border: none;
+      }
+    }
+    @include media(700) {
+      padding-right: 10px;
+      border-bottom: 1px solid #e2dfdd;
+    }
     &:hover {
       .models-card__img img {
         transform: scale(1.1);
@@ -3248,7 +3310,7 @@ select {
       gap: 20px;
     }
     @include media(992) {
-      flex-direction: column;
+      flex-direction: column-reverse;
     }
     .content {
       min-width: 322px;
@@ -3413,6 +3475,7 @@ select {
 .models-slider {
   position: relative;
   padding-left: 58px;
+  cursor: none;
   @include media(1200) {
     padding-left: 20px;
   }
@@ -3429,11 +3492,28 @@ select {
     justify-content: center;
     font-size: 17px;
     text-transform: uppercase;
-    position: absolute;
-    top: 50%;
-    left: 56%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(0, 0); /* Bu qism olib tashlanadi */
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    // border-radius: 50%;
+    // background-color: rgb(228, 0, 0);
+    // width: 120px;
+    // height: 121px;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // font-size: 17px;
+    // text-transform: uppercase;
+    // position: absolute;
+    // top: 50%;
+    // left: 56%;
+    // transform: translate(-50%, -50%);
+    // z-index: 10;
     @include media(768) {
       width: 80px;
       left: 78%;

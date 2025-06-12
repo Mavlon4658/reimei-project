@@ -60,7 +60,6 @@ const homeSwp = new Swiper('.home-swp .swiper', {
       loop: true,
     },
     0: {
-      loop: false,
       spaceBetween: 50,
 
     }
@@ -248,4 +247,38 @@ document.addEventListener('DOMContentLoaded', () => {
       behavior: 'smooth'
     });
   });
+});
+const dragBox = document.querySelector('.drag-box');
+if (dragBox) {
+  const modelsSlider2 = document.querySelector('.models-slider');
+  modelsSlider2.addEventListener('mouseenter', () => {
+    dragBox.style.opacity = '1';
+  });
+
+  modelsSlider2.addEventListener('mouseleave', () => {
+    dragBox.style.opacity = '0';
+  });
+  // cursor harakatini kuzatish va drag-boxni joylashtirish
+  modelsSlider2.addEventListener('mousemove', (e) => {
+    const x = e.clientX;
+    const y = e.clientY;
+
+    // drag-box o'rtasini cursor markaziga moslashtirish
+    const boxWidth = dragBox.offsetWidth / 2;
+    const boxHeight = dragBox.offsetHeight / 2;
+
+    dragBox.style.left = `${x - boxWidth}px`;
+    dragBox.style.top = `${y - boxHeight}px`;
+  });
+}
+
+
+const speedSwiper = new Swiper('.speedSwiper', {
+  direction: 'vertical',
+  slidesPerView: 'auto',
+  freeMode: true,
+  mousewheel: true,
+  scrollbar: {
+    el: null,
+  },
 });
