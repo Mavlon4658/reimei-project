@@ -70,7 +70,20 @@ const homeSwp = new Swiper('.home-swp .swiper', {
 const modelsSlider = new Swiper('.models-slider', {
   slidesPerView: 1.9,
   speed: 800,
-   spaceBetween: 80,
+  spaceBetween: 80,
+  breakpoints: {
+    1200: {
+      spaceBetween: 80,
+      slidesPerView: 1.9,
+    },
+    992: {
+      spaceBetween: 20,slidesPerView: 1.5,
+    },
+    0: {
+      spaceBetween: 20,
+      slidesPerView: 1.3,
+    }
+  }
 })
 
 try {
