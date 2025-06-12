@@ -250,7 +250,13 @@ select {
 
       li:nth-child(1) {
         position: relative;
-
+        transition: all 0.2s linear;
+        &::before {
+          opacity: 1;
+        }
+      }
+      li {
+        position: relative;
         &::before {
           content: '';
           position: absolute;
@@ -259,6 +265,14 @@ select {
           width: 20px;
           height: 2px;
           background: white;
+          opacity: 0;
+          transition: all 0.2s linear;
+        }
+        &:hover {
+          &::before {
+            opacity: 1;
+            width: 100%;
+          }
         }
       }
 
@@ -302,7 +316,7 @@ select {
           content: '';
           position: absolute;
           left: 0;
-          bottom: 0;
+          bottom: -10px;
           width: 100%;
           height: 3px;
           -webkit-transform: translate(-50%, 100%);
@@ -398,10 +412,17 @@ select {
 .home {
   position: relative;
   padding-top: 40px;
+  &-container {
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    left: 50%;
+    transform: translateX(-50%);
+  }
   &-swp {
     @include media(700) {
       position: relative;
-      height: 617px;
+      height: 705px;
     }
 
     .swiper {
@@ -412,26 +433,54 @@ select {
         padding-bottom: 150px;
       }
       @include media(700) {
-        padding: 0 0 36px 0;
+        padding: 0 0 136px 0;
       }
       &-slide {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        & > div {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        ul.d-flex {
+          transform: translateX(-28px);
+          z-index: 10;
+          position: relative;
+          padding-bottom: 45px;
+          @include media(1300) {
+            transform: translateX(-28px) translateY(150px);
+          }
+          @include media(700) {
+            position: absolute;
+            bottom: -144px;
+            left: 15px;
+            transform: none;
+            img {
+              width: 46px;
+            }
+          }
+        }
 
         @include media(1300) {
-          justify-content: start;
-          img {
-            position: absolute;
-            top: 0;
-            right: -100px;
-            z-index: -1;
+          & > div {
+            justify-content: start;
+            .slide-img {
+              position: absolute;
+              top: 0;
+              z-index: -1;
+              right: -100px;
+              @include media(700) {
+                left: 50%;
+                transform: translateX(-50%);
+              }
+            }
           }
         }
         @include media(700) {
-          flex-direction: column-reverse;
+          & > div {
+            flex-direction: column-reverse;
+          }
         }
-        img {
+        .slide-img {
           @include media(1024) {
             transform: scale(0.7);
           }
@@ -1676,11 +1725,17 @@ select {
     z-index: 100;
     border: 1px solid #010101;
     border-radius: 10px;
-    padding: 10px;
     display: none;
+    overflow: hidden;
   }
   .select-option {
     cursor: pointer;
+    padding: 10px;
+    &:hover,
+    &.active {
+      color: #fff;
+      background-color: #878787;
+    }
   }
 }
 .paginations {
@@ -1699,7 +1754,9 @@ select {
     height: 45px;
     font-size: 17px;
     border-radius: 20px;
-    &.active {
+    transition: all 0.2s linear;
+    &.active,
+    &:hover {
       border-color: #010101;
     }
   }
@@ -1711,6 +1768,13 @@ select {
     justify-content: center;
     border: 1px solid #c5c5c5;
     border-radius: 50%;
+    transition: all 0.2s linear;
+    &.rotate {
+      transform: rotate(-180deg);
+    }
+    &:hover {
+      border-color: #010101;
+    }
   }
 }
 // news page
@@ -1751,7 +1815,7 @@ select {
   }
   .news-cards {
     margin-top: 50px;
-    row-gap: 27px;
+    row-gap: 95px;
     .news-img {
       height: 370px;
       position: relative;
@@ -1810,7 +1874,8 @@ select {
     .news-title {
       font-size: 20px;
       line-height: 30px;
-      font-weight: 400;
+      font-weight: 500;
+      color: #010101;
       @include media(992) {
         font-size: 18px;
         line-height: 22px;
@@ -2003,13 +2068,16 @@ select {
       line-height: 30px;
       display: block;
     }
-    input {
+    input,
+    textarea {
+      height: 68px;
       font-size: 20px;
       line-height: 30px;
       padding: 22px 0 15px 0;
       border-bottom: 1px solid #303130;
       width: 100%;
       color: #fff;
+      resize: none;
       &::placeholder {
         color: #585757;
       }
@@ -2065,7 +2133,7 @@ select {
 .services-sec {
   background-color: #fff;
   color: #010101;
-  padding: 125px 0 142px 0;
+  padding: 125px 0 136px 0;
   @include media(768) {
     padding-block: 50px;
   }
@@ -2111,8 +2179,52 @@ select {
       padding-top: 0;
     }
   }
+  .line-top {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -122px;
+      left: 18px;
+      width: 1px;
+      background: #b3b3b3;
+      height: 100px;
+      @include media(1200) {
+        display: none;
+      }
+    }
+  }
+  .line-box {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 25px;
+      left: -30px;
+      width: 1px;
+      background: #b3b3b3;
+      height: 96%;
+      @include media(1200) {
+        display: none;
+      }
+    }
+    padding-bottom: 98px;
+    @include media(1200) {
+      padding-bottom: 30px;
+    }
+    &.line-box__right {
+      &::before {
+        left: unset;
+        right: -87px;
+        height: 118%;
+      }
+    }
+  }
   .info-box {
     padding: 45px 0 48px 0;
+
     @include media(768) {
       padding: 20px 0;
     }
@@ -2157,7 +2269,6 @@ select {
   }
 
   .bottom-box {
-    margin-top: 98px;
     @include media(768) {
       margin-top: 26px;
     }
@@ -2176,6 +2287,11 @@ select {
         br {
           display: none;
         }
+      }
+    }
+    .service-img {
+      @include media(768) {
+        order: -1;
       }
     }
     .service-img img {
@@ -2198,7 +2314,6 @@ select {
     }
   }
 }
-
 // about-page
 .about-sec {
   background-color: #fff;
@@ -2689,17 +2804,20 @@ select {
       border: 1px solid #a9a9a9;
       border-radius: 100px;
       height: 45px;
+      color: #010101;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 17px;
       font-weight: 500;
+      transition: all .2s linear;
       @include media(768) {
         flex: 1 1 auto;
         height: 40px;
         font-size: 16px;
       }
-      &.active {
+      &.active ,
+      &:hover{
         color: #fff;
         background-color: #010101;
       }
@@ -2726,14 +2844,12 @@ select {
   }
   .models {
     border-bottom: 1px solid #e0dedc;
-    padding-bottom: 63px;
-    margin-bottom: 50px;
-    &:last-child {
-      margin-bottom: 0;
-    }
+    border-top: 1px solid #e0dedc;
+
+
     @include media(992) {
       padding-bottom: 0;
-      border: none;
+      // border: none;
     }
   }
   .models-container {
@@ -2741,7 +2857,6 @@ select {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 10px;
     @include media(1850) {
       max-width: calc(100% - 30px);
     }
@@ -2749,7 +2864,6 @@ select {
       overflow-x: auto;
       display: flex;
       gap: 20px;
-      padding-bottom: 30px;
       & > div {
         min-width: 250px;
         max-width: 250px;
@@ -2767,11 +2881,26 @@ select {
     }
   }
   .models-card {
+    border-right: 1px solid #e2dfdd;
+    padding-bottom: 63px;
+    padding-left: 10px;
+    padding-top: 50px;
+    &:hover {
+      .models-card__img img {
+        transform: scale(1.1);
+      }
+    }
+    &:last-child {
+      border-right: 0;
+    }
+
     &__img {
       min-width: 230px;
+
       width: 100%;
       height: 180px;
       img {
+        transition: all .2s linear;
         object-fit: contain;
         height: 100%;
         width: 100%;
@@ -2879,6 +3008,7 @@ select {
   &__bottom {
     padding: 95px 0;
     display: flex;
+    align-items: center;
     gap: 80px;
     @include media(1065) {
       gap: 10px;
@@ -3132,7 +3262,7 @@ select {
         padding-top: 30px;
       }
       p {
-        font-display: 20px;
+        font-size: 20px;
         line-height: 30px;
         font-weight: 500;
         padding: 42px 0 84px 0;
@@ -3143,6 +3273,10 @@ select {
       }
       .red-btn {
         height: 50px;
+        &:hover {
+          background-color: transparent;
+          border-color: red;
+        }
         &:last-child {
           margin-top: 20px;
         }
@@ -3200,20 +3334,51 @@ select {
       font-size: 17px;
       line-height: 30px;
       font-weight: 500;
-      margin: 53px 0 20px 0;
+      margin: 53px 0 0 0;
+      position: relative;
+      transition: all .2s linear;
+      &.active {
+          padding-bottom: 20px;
+
+        &::after {
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          180deg,
+          #000 33.52%,
+          rgba(0, 0, 0, 0.75) 69.72%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        transform: rotate(180deg);
+        transition: all 0.5s ease;
+      }
       @include media(768) {
         font-size: 16px;
         line-height: 22px;
         margin: 30px 0 20px 0;
-      }
-      span {
-        display: none;
       }
     }
     .show-more {
       gap: 21px;
       color: #fff;
       font-size: 20px;
+      img {
+        transition: all .2s linear;
+      }
+      &.active {
+        img {
+          transform: rotate(180deg);
+        }
+      }
       @include media(768) {
         font-size: 16px;
       }

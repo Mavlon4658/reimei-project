@@ -77,7 +77,7 @@ const modelsSlider = new Swiper('.models-slider', {
       slidesPerView: 1.9,
     },
     992: {
-      spaceBetween: 20,slidesPerView: 1.5,
+      spaceBetween: 20, slidesPerView: 1.5,
     },
     0: {
       spaceBetween: 20,
@@ -128,10 +128,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Selectni ochish/yopish
     head.addEventListener('click', (e) => {
       e.stopPropagation();
+
       // Boshqa selectlardan active olib tashlash
       selects.forEach(s => {
         if (s !== select) s.classList.remove('active');
       });
+
       select.classList.toggle('active');
     });
 
@@ -139,12 +141,18 @@ document.addEventListener('DOMContentLoaded', () => {
     options.forEach(option => {
       option.addEventListener('click', (e) => {
         e.stopPropagation();
+
         // Tanlangan textni yangilash
         selectedText.textContent = option.textContent;
 
-        // Active klassni optionlar orasida faqat tanlangan optionga qo'yish
+        // Barcha optionlardan active olib tashlash
         options.forEach(opt => opt.classList.remove('active'));
+
+        // Tanlangan optionga active qo‘yish
         option.classList.add('active');
+
+        // Select konteyneriga has-selected class qo‘yish
+        select.classList.add('has-selected');
 
         // Selectni yopish
         select.classList.remove('active');
@@ -154,6 +162,90 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Tashqariga bosilganda barcha selectlarni yopish
   window.addEventListener('click', () => {
-    selects.forEach(select => select.classList.remove('active'));
+    document.querySelectorAll('.custom-select').forEach(select => {
+      select.classList.remove('active');
+    });
+  });
+});
+
+
+
+try {
+  function initMap() {
+    const location = { lat: 25.0951, lng: 55.1581 }; // Dubai Internet City koordinatalari
+
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 14,
+      center: location,
+      disableDefaultUI: true,
+
+      styles: [ // Kulrang stil
+        {
+          "elementType": "geometry",
+          "stylers": [{ "color": "#f5f5f5" }]
+        },
+        {
+          "elementType": "labels.icon",
+          "stylers": [{ "visibility": "off" }]
+        },
+        {
+          "elementType": "labels.text.fill",
+          "stylers": [{ "color": "#616161" }]
+        },
+        {
+          "elementType": "labels.text.stroke",
+          "stylers": [{ "color": "#f5f5f5" }]
+        },
+        {
+          "featureType": "administrative.land_parcel",
+          "stylers": [{ "visibility": "off" }]
+        },
+        {
+          "featureType": "poi",
+          "stylers": [{ "visibility": "off" }]
+        },
+        {
+          "featureType": "road",
+          "stylers": [{ "color": "#ffffff" }]
+        },
+        {
+          "featureType": "water",
+          "stylers": [{ "color": "#c9c9c9" }]
+        }
+      ]
+    });
+
+    const marker = new google.maps.Marker({
+      position: location,
+      map: map,
+      icon: {
+        url: "./assets/images/point.png", // Marker iconi
+      }
+    });
+  }
+  initMap()
+} catch (error) {
+
+}
+
+
+const seeMore = document.querySelector(".show-more");
+if (seeMore) {
+  const showTex = document.querySelector(".show-text")
+  seeMore.addEventListener("click", () => {
+    showTex.classList.toggle('active')
+    seeMore.classList.toggle('active')
+  })
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const scrollBtn = document.querySelector('.scroll-down');
+  const speedTable = document.querySelector('.speed-table');
+
+  scrollBtn.addEventListener('click', () => {
+    speedTable.scrollTo({
+      top: speedTable.scrollHeight,
+      behavior: 'smooth'
+    });
   });
 });
