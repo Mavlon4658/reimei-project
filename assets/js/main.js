@@ -237,48 +237,126 @@ if (seeMore) {
   })
 }
 
+// document.addEventListener('DOMContentLoaded', () => {
+//   const scrollBtn = document.querySelector('.scroll-down');
+//   const speedTable = document.querySelector('.speed-table');
+
+//   scrollBtn.addEventListener('click', () => {
+//     speedTable.scrollTo({
+//       top: speedTable.scrollHeight,
+//       behavior: 'smooth'
+//     });
+//   });
+// });
+// const dragBox = document.querySelector('.drag-box');
+// if (dragBox) {
+//   const modelsSlider2 = document.querySelector('.models-slider');
+//   modelsSlider2.addEventListener('mouseenter', () => {
+//     dragBox.style.opacity = '1';
+//   });
+
+//   modelsSlider2.addEventListener('mouseleave', () => {
+//     dragBox.style.opacity = '0';
+//   });
+//   // cursor harakatini kuzatish va drag-boxni joylashtirish
+//   modelsSlider2.addEventListener('mousemove', (e) => {
+//     const x = e.clientX;
+//     const y = e.clientY;
+
+//     // drag-box o'rtasini cursor markaziga moslashtirish
+//     const boxWidth = dragBox.offsetWidth / 2;
+//     const boxHeight = dragBox.offsetHeight / 2;
+
+//     dragBox.style.left = `${x - boxWidth}px`;
+//     dragBox.style.top = `${y - boxHeight}px`;
+//   });
+// }
+
+
+// const speedSwiper = new Swiper('.speedSwiper', {
+//   direction: 'vertical',
+//   slidesPerView: 'auto',
+//   freeMode: true,
+//   mousewheel: true,
+//   scrollbar: {
+//     el: null,
+//   },
+// });
+
 document.addEventListener('DOMContentLoaded', () => {
   const scrollBtn = document.querySelector('.scroll-down');
   const speedTable = document.querySelector('.speed-table');
+  let scrollInterval = null;
 
-  scrollBtn.addEventListener('click', () => {
-    speedTable.scrollTo({
-      top: speedTable.scrollHeight,
-      behavior: 'smooth'
+  if (scrollBtn && speedTable) {
+    // scroll harakatini boshlovchi funksiya
+    const startScrolling = () => {
+      if (scrollInterval) return; // agar allaqachon scroll bo‘layotgan bo‘lsa, yangi interval ochilmasin
+      scrollInterval = setInterval(() => {
+        speedTable.scrollTop += 4;
+      }, 10);
+    };
+
+    // scroll to‘xtatuvchi funksiya
+    const stopScrolling = () => {
+      if (scrollInterval) {
+        clearInterval(scrollInterval);
+        scrollInterval = null;
+      }
+    };
+
+    // MOUSE holatlari
+    scrollBtn.addEventListener('mousedown', (e) => {
+      e.preventDefault();
+      startScrolling();
     });
+
+    scrollBtn.addEventListener('mouseup', stopScrolling);
+    scrollBtn.addEventListener('mouseleave', stopScrolling);
+    document.addEventListener('mouseup', stopScrolling); // tashqaridan qo‘yib yuborish holatiga ham
+
+    // TOUCH holatlari
+    scrollBtn.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      startScrolling();
+    });
+
+    scrollBtn.addEventListener('touchend', stopScrolling);
+    document.addEventListener('touchend', stopScrolling);
+  }
+
+  // Swiper scroll (vertical)
+  new Swiper('.speedSwiper', {
+    direction: 'vertical',
+    slidesPerView: 'auto',
+    freeMode: true,
+    mousewheel: true,
+    scrollbar: {
+      el: null,
+    },
   });
-});
-const dragBox = document.querySelector('.drag-box');
-if (dragBox) {
+
+  // DRAG-BOX
+  const dragBox = document.querySelector('.drag-box');
   const modelsSlider2 = document.querySelector('.models-slider');
-  modelsSlider2.addEventListener('mouseenter', () => {
-    dragBox.style.opacity = '1';
-  });
 
-  modelsSlider2.addEventListener('mouseleave', () => {
-    dragBox.style.opacity = '0';
-  });
-  // cursor harakatini kuzatish va drag-boxni joylashtirish
-  modelsSlider2.addEventListener('mousemove', (e) => {
-    const x = e.clientX;
-    const y = e.clientY;
+  if (dragBox && modelsSlider2) {
+    modelsSlider2.addEventListener('mouseenter', () => {
+      dragBox.style.opacity = '1';
+    });
 
-    // drag-box o'rtasini cursor markaziga moslashtirish
-    const boxWidth = dragBox.offsetWidth / 2;
-    const boxHeight = dragBox.offsetHeight / 2;
+    modelsSlider2.addEventListener('mouseleave', () => {
+      dragBox.style.opacity = '0';
+    });
 
-    dragBox.style.left = `${x - boxWidth}px`;
-    dragBox.style.top = `${y - boxHeight}px`;
-  });
-}
-
-
-const speedSwiper = new Swiper('.speedSwiper', {
-  direction: 'vertical',
-  slidesPerView: 'auto',
-  freeMode: true,
-  mousewheel: true,
-  scrollbar: {
-    el: null,
-  },
+    modelsSlider2.addEventListener('mousemove', (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      const boxWidth = dragBox.offsetWidth / 2;
+      const boxHeight = dragBox.offsetHeight / 2;
+      dragBox.style.left = `${x - boxWidth}px`;
+      dragBox.style.top = `${y - boxHeight}px`;
+    });
+  }
 });
+
